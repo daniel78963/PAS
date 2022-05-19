@@ -1,0 +1,21 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32516.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PAS.Application", "PAS.Application", "{71CC8DD8-C909-4344-B93F-90B143F071CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PAS.Domain", "PAS.Domain", "{F7060B1A-CDD0-4BEC-B203-6BE933C49564}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PAS.Infrastructure", "PAS.Infrastructure", "{F8149C71-EE72-4B84-BF38-E24826125A62}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PAS.Presentation", "PAS.Presentation", "{ED08DF00-5805-4BF2-8F8D-6174EB7B30DD}"
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {308058D4-99FC-488D-BF72-7B72FFAC796B}
+	EndGlobalSection
+EndGlobal
