@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PAS.Domain.Interfaces\PAS.Domain.Interfaces.csproj" />
+    <ProjectReference Include="..\PAS.Infrastructure.Interfaces\PAS.Infrastructure.Interfaces.csproj" />
+  </ItemGroup>
+
 </Project>
