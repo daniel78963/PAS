@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAS.Infrastructure.Reposito
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAS.Application.API", "PAS.Application.API\PAS.Application.API.csproj", "{7F1A5532-4094-4408-BBB9-10F163B83246}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAS.Infrastructure.Interfaces", "PAS.Infrastructure.Interfaces\PAS.Infrastructure.Interfaces.csproj", "{B178EFAE-F211-44F8-A819-F2C56A6661F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +67,10 @@ Global
 		{7F1A5532-4094-4408-BBB9-10F163B83246}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F1A5532-4094-4408-BBB9-10F163B83246}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F1A5532-4094-4408-BBB9-10F163B83246}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B178EFAE-F211-44F8-A819-F2C56A6661F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B178EFAE-F211-44F8-A819-F2C56A6661F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B178EFAE-F211-44F8-A819-F2C56A6661F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B178EFAE-F211-44F8-A819-F2C56A6661F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,6 +84,7 @@ Global
 		{462E4CC4-B4CE-4883-BDA3-AE3B15348AA1} = {F8149C71-EE72-4B84-BF38-E24826125A62}
 		{31CAC2D9-A6C7-40B7-B70F-663D0D077C8F} = {F8149C71-EE72-4B84-BF38-E24826125A62}
 		{7F1A5532-4094-4408-BBB9-10F163B83246} = {71CC8DD8-C909-4344-B93F-90B143F071CE}
+		{B178EFAE-F211-44F8-A819-F2C56A6661F2} = {F8149C71-EE72-4B84-BF38-E24826125A62}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {308058D4-99FC-488D-BF72-7B72FFAC796B}
