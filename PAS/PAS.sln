@@ -11,25 +11,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PAS.Infrastructure", "PAS.I
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PAS.Presentation", "PAS.Presentation", "{ED08DF00-5805-4BF2-8F8D-6174EB7B30DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAS.Application.Dto", "PAS.Application.Dto\PAS.Application.Dto.csproj", "{14C48804-4C63-47C7-9A34-F42021623CA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PAS.Application.Dto", "PAS.Application.Dto\PAS.Application.Dto.csproj", "{14C48804-4C63-47C7-9A34-F42021623CA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAS.Application.Services", "PAS.Application.Services\PAS.Application.Services.csproj", "{A0AA1178-144B-4B05-94E6-179A561E4887}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PAS.Application.Services", "PAS.Application.Services\PAS.Application.Services.csproj", "{A0AA1178-144B-4B05-94E6-179A561E4887}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAS.Domain.Core", "PAS.Domain.Core\PAS.Domain.Core.csproj", "{DF7A4332-A5F9-44A6-87B6-3D695FA4BA31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PAS.Domain.Core", "PAS.Domain.Core\PAS.Domain.Core.csproj", "{DF7A4332-A5F9-44A6-87B6-3D695FA4BA31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAS.Domain.Entities", "PAS.Domain.Entities\PAS.Domain.Entities.csproj", "{6A753A52-70F7-41D0-8ECE-BB285E6A8305}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PAS.Domain.Entities", "PAS.Domain.Entities\PAS.Domain.Entities.csproj", "{6A753A52-70F7-41D0-8ECE-BB285E6A8305}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAS.Domain.Interfaces", "PAS.Domain.Interfaces\PAS.Domain.Interfaces.csproj", "{DE134837-B04F-480C-9604-13AB296EB39B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PAS.Domain.Interfaces", "PAS.Domain.Interfaces\PAS.Domain.Interfaces.csproj", "{DE134837-B04F-480C-9604-13AB296EB39B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAS.Infrastructure.Data", "PAS.Infrastructure.Data\PAS.Infrastructure.Data.csproj", "{462E4CC4-B4CE-4883-BDA3-AE3B15348AA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PAS.Infrastructure.Data", "PAS.Infrastructure.Data\PAS.Infrastructure.Data.csproj", "{462E4CC4-B4CE-4883-BDA3-AE3B15348AA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAS.Infrastructure.Repositories", "PAS.Infrastructure.Repositories\PAS.Infrastructure.Repositories.csproj", "{31CAC2D9-A6C7-40B7-B70F-663D0D077C8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PAS.Infrastructure.Repositories", "PAS.Infrastructure.Repositories\PAS.Infrastructure.Repositories.csproj", "{31CAC2D9-A6C7-40B7-B70F-663D0D077C8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAS.Application.API", "PAS.Application.API\PAS.Application.API.csproj", "{7F1A5532-4094-4408-BBB9-10F163B83246}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PAS.Application.API", "PAS.Application.API\PAS.Application.API.csproj", "{7F1A5532-4094-4408-BBB9-10F163B83246}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAS.Infrastructure.Interfaces", "PAS.Infrastructure.Interfaces\PAS.Infrastructure.Interfaces.csproj", "{B178EFAE-F211-44F8-A819-F2C56A6661F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PAS.Infrastructure.Interfaces", "PAS.Infrastructure.Interfaces\PAS.Infrastructure.Interfaces.csproj", "{B178EFAE-F211-44F8-A819-F2C56A6661F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAS.Application.Interfaces", "PAS.Application.Interfaces\PAS.Application.Interfaces.csproj", "{CEA82551-0DD9-417F-B26D-B46F2AE4FBC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PAS.Application.Interfaces", "PAS.Application.Interfaces\PAS.Application.Interfaces.csproj", "{CEA82551-0DD9-417F-B26D-B46F2AE4FBC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAS.Application.Mapper", "PAS.Application.Mapper\PAS.Application.Mapper.csproj", "{1C9E95BF-D965-428D-99B7-B03615F749ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +79,10 @@ Global
 		{CEA82551-0DD9-417F-B26D-B46F2AE4FBC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEA82551-0DD9-417F-B26D-B46F2AE4FBC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEA82551-0DD9-417F-B26D-B46F2AE4FBC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C9E95BF-D965-428D-99B7-B03615F749ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C9E95BF-D965-428D-99B7-B03615F749ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C9E95BF-D965-428D-99B7-B03615F749ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C9E95BF-D965-428D-99B7-B03615F749ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,6 +98,7 @@ Global
 		{7F1A5532-4094-4408-BBB9-10F163B83246} = {71CC8DD8-C909-4344-B93F-90B143F071CE}
 		{B178EFAE-F211-44F8-A819-F2C56A6661F2} = {F8149C71-EE72-4B84-BF38-E24826125A62}
 		{CEA82551-0DD9-417F-B26D-B46F2AE4FBC8} = {71CC8DD8-C909-4344-B93F-90B143F071CE}
+		{1C9E95BF-D965-428D-99B7-B03615F749ED} = {71CC8DD8-C909-4344-B93F-90B143F071CE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {308058D4-99FC-488D-BF72-7B72FFAC796B}

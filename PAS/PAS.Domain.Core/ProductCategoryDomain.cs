@@ -13,7 +13,7 @@ namespace PAS.Domain.Core
             this.productCategoryRepository = productCategoryRepository;
         }
 
-        public IEnumerable<ProductCategory> GetCategories()
+        public IEnumerable<ProductCategory> GetProductsCategories()
         {
             return productCategoryRepository.GetProductsCategories();
         }
