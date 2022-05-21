@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PAS.Domain.Entities;
+using PAS.Infrastructure.Interfaces;
 
 namespace PAS.Infrastructure.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : DbContext, IDataContext
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }

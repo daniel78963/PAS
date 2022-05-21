@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PAS.Application.Dto\PAS.Application.Dto.csproj" />
+  </ItemGroup>
+
 </Project>

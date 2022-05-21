@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PAS.Domain.Entities\PAS.Domain.Entities.csproj" />
+    <ProjectReference Include="..\PAS.Infrastructure.Interfaces\PAS.Infrastructure.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

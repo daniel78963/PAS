@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using PAS.Application.Interfaces;
 
 namespace PAS.Application.API.Controllers
 {
@@ -7,6 +7,18 @@ namespace PAS.Application.API.Controllers
     [ApiController]
     public class CategoriesController : ControllerBase
     {
+        private readonly IProductCategoryService productCategoryService;
 
+        public CategoriesController(IProductCategoryService productCategoryService)
+        {
+            this.productCategoryService = productCategoryService;
+        }
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            var response = productCategoryService.GetProductsCategories();
+            return Ok(response);
+        }
     }
 }

@@ -7,7 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PAS.Application.Interfaces\PAS.Application.Interfaces.csproj" />
+    <ProjectReference Include="..\PAS.Application.Mapper\PAS.Application.Mapper.csproj" />
+    <ProjectReference Include="..\PAS.Application.Services\PAS.Application.Services.csproj" />
+    <ProjectReference Include="..\PAS.Domain.Core\PAS.Domain.Core.csproj" />
+    <ProjectReference Include="..\PAS.Infrastructure.Data\PAS.Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\PAS.Infrastructure.Repositories\PAS.Infrastructure.Repositories.csproj" />
   </ItemGroup>
 
 </Project>
