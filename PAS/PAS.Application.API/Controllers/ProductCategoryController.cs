@@ -1,15 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using PAS.Application.Interfaces;
 
 namespace PAS.Application.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoriesController : ControllerBase
+    public class ProductCategoryController : ControllerBase
     {
         private readonly IProductCategoryService productCategoryService;
 
-        public CategoriesController(IProductCategoryService productCategoryService)
+        public ProductCategoryController(IProductCategoryService productCategoryService)
         {
             this.productCategoryService = productCategoryService;
         }

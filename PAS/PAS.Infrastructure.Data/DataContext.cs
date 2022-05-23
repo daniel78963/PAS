@@ -8,7 +8,7 @@ namespace PAS.Infrastructure.Data
     public class DataContext : DbContext 
     {
         public DbSet<Product> Products { get; set; }
-        public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<ProductCategory> ProductCategory { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {

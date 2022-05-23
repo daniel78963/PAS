@@ -15,12 +15,12 @@ namespace PAS.Infrastructure.Repositories
 
         public IEnumerable<ProductCategory> GetProductsCategories()
         {
-            return dataContext.ProductCategories;
+            return dataContext.ProductCategory;
         }
 
         public IEnumerable<ProductCategory> GetProductsCategories(string parameters)
         {
-            return dataContext.ProductCategories;
+            return dataContext.ProductCategory;
         }
     }
 }
