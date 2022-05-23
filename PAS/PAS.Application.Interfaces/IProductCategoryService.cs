@@ -1,4 +1,5 @@
 ﻿using PAS.Application.Dto;
+using PAS.Application.QueryParameters;
 
 namespace PAS.Application.Interfaces
 {
@@ -7,7 +8,7 @@ namespace PAS.Application.Interfaces
 
         public Response<IEnumerable<ProductCategoryDto>> GetProductsCategories();
 
-        public Response<IEnumerable<ProductCategoryDto>> GetProductsCategories(string parameters);
+        public Response<IEnumerable<ProductCategoryDto>> GetProductsCategoriesFilters(ProductCategoryParameters parameters);
 
     }
 }

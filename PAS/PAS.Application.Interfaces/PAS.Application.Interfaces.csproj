@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PAS.Application.Dto\PAS.Application.Dto.csproj" />
+    <ProjectReference Include="..\PAS.Application.QueryParameters\PAS.Application.QueryParameters.csproj" />
   </ItemGroup>
 
 </Project>

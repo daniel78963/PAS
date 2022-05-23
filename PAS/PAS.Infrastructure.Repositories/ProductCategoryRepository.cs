@@ -1,4 +1,5 @@
-﻿using PAS.Domain.Entities;
+﻿using PAS.Application.QueryParameters;
+using PAS.Domain.Entities;
 using PAS.Infrastructure.Data;
 using PAS.Infrastructure.Interfaces;
 
@@ -7,10 +8,12 @@ namespace PAS.Infrastructure.Repositories
     public class ProductCategoryRepository : IProductCategoryRepository
     {
         private readonly DataContext dataContext;
+        private readonly ISortHelper<ProductCategory> sortHelper;
 
-        public ProductCategoryRepository(DataContext dataContext)
+        public ProductCategoryRepository(DataContext dataContext, ISortHelper<ProductCategory> sortHelper)
         {
             this.dataContext = dataContext;
+            this.sortHelper = sortHelper;
         }
 
         public IEnumerable<ProductCategory> GetProductsCategories()
@@ -18,9 +21,10 @@ namespace PAS.Infrastructure.Repositories
             return dataContext.ProductCategory;
         }
 
-        public IEnumerable<ProductCategory> GetProductsCategories(string parameters)
+        public IEnumerable<ProductCategory> GetProductsCategoriesFilters(ProductCategoryParameters parameters)
         {
-            return dataContext.ProductCategory;
+            var categories = dataContext.ProductCategory;
+            return sortHelper.ApplySort(categories, parameters.OrderBy); 
         }
     }
 }

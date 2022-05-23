@@ -1,4 +1,5 @@
-﻿using PAS.Domain.Entities;
+﻿using PAS.Application.QueryParameters;
+using PAS.Domain.Entities;
 using PAS.Domain.Interfaces;
 using PAS.Infrastructure.Interfaces;
 
@@ -18,9 +19,9 @@ namespace PAS.Domain.Core
             return productCategoryRepository.GetProductsCategories();
         }
 
-        public IEnumerable<ProductCategory> GetProductsCategories(string parameters)
+        public IEnumerable<ProductCategory> GetProductsCategoriesFilters(ProductCategoryParameters parameters)
         {
-            return productCategoryRepository.GetProductsCategories(parameters);
+            return productCategoryRepository.GetProductsCategoriesFilters(parameters);
         }
     }
 }

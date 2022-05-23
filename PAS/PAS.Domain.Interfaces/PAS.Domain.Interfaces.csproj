@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PAS.Application.QueryParameters\PAS.Application.QueryParameters.csproj" />
     <ProjectReference Include="..\PAS.Domain.Entities\PAS.Domain.Entities.csproj" />
   </ItemGroup>
 

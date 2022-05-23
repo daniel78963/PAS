@@ -1,10 +1,11 @@
-﻿using PAS.Domain.Entities;
+﻿using PAS.Application.QueryParameters;
+using PAS.Domain.Entities;
 
 namespace PAS.Infrastructure.Interfaces
 {
     public interface IProductCategoryRepository
     {
         IEnumerable<ProductCategory> GetProductsCategories();
-        IEnumerable<ProductCategory> GetProductsCategories(string parameters);
+        IEnumerable<ProductCategory> GetProductsCategoriesFilters(ProductCategoryParameters parameters);
     }
 }

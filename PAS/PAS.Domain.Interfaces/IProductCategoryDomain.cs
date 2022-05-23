@@ -1,4 +1,5 @@
-﻿using PAS.Domain.Entities;
+﻿using PAS.Application.QueryParameters;
+using PAS.Domain.Entities;
 
 namespace PAS.Domain.Interfaces
 {
@@ -6,6 +7,6 @@ namespace PAS.Domain.Interfaces
     {
         public IEnumerable<ProductCategory> GetProductsCategories();
 
-        public IEnumerable<ProductCategory> GetProductsCategories(string parameters);
+        public IEnumerable<ProductCategory> GetProductsCategoriesFilters(ProductCategoryParameters parameters);
     }
 }

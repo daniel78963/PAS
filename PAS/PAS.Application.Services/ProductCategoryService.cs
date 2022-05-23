@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using PAS.Application.Dto;
 using PAS.Application.Interfaces;
+using PAS.Application.QueryParameters;
 using PAS.Domain.Interfaces;
 
 namespace PAS.Application.Services
@@ -37,12 +38,12 @@ namespace PAS.Application.Services
             return response;
         }
 
-        public Response<IEnumerable<ProductCategoryDto>> GetProductsCategories(string parameters)
+        public Response<IEnumerable<ProductCategoryDto>> GetProductsCategoriesFilters(ProductCategoryParameters parameters)
         {
             var response = new Response<IEnumerable<ProductCategoryDto>>();
             try
             {
-                var categories = productCategoryDomain.GetProductsCategories(parameters);
+                var categories = productCategoryDomain.GetProductsCategoriesFilters(parameters);
                 response.Data = mapper.Map<IEnumerable<ProductCategoryDto>>(categories);
                 if (response.Data != null)
                 {
