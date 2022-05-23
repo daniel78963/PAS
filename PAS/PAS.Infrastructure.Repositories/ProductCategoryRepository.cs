@@ -1,13 +1,14 @@
 ﻿using PAS.Domain.Entities;
+using PAS.Infrastructure.Data;
 using PAS.Infrastructure.Interfaces;
 
 namespace PAS.Infrastructure.Repositories
 {
     public class ProductCategoryRepository : IProductCategoryRepository
     {
-        private readonly IDataContext dataContext;
+        private readonly DataContext dataContext;
 
-        public ProductCategoryRepository(IDataContext dataContext)
+        public ProductCategoryRepository(DataContext dataContext)
         {
             this.dataContext = dataContext;
         }
