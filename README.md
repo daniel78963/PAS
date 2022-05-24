@@ -6,11 +6,17 @@ Sample implementation of the Clean Architecture Principles with .NET Core.
 # Features
 - OrderBy
 
-Example:
+Example
+```sh
 https://localhost:7288/api/ProductCategory?OrderBy=NameCategory%20desc
+```
 
 - SortHelper
 
 
 
 - Nuget: System.Linq.Dynamic.Core
+
+```sh
+node app
+```
