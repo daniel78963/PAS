@@ -4,11 +4,12 @@ using PAS.Application.Interfaces;
 using PAS.Application.Mapper;
 using PAS.Application.Services;
 using PAS.Domain.Core;
+using PAS.Domain.Entities;
 using PAS.Domain.Interfaces;
 using PAS.Infrastructure.Data;
+using PAS.Infrastructure.Data.Helpers;
 using PAS.Infrastructure.Interfaces;
 using PAS.Infrastructure.Repositories;
-//using System.Configuration;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,7 @@ builder.Services.AddDbContext<DataContext>(cfg =>
 builder.Services.AddScoped<IProductCategoryService, ProductCategoryService>();
 builder.Services.AddScoped<IProductCategoryDomain, ProductCategoryDomain>();
 builder.Services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
+builder.Services.AddScoped<ISortHelper<ProductCategory>, SortHelper<ProductCategory>>();
 //builder.Services.AddScoped<IDataContext, DataContext>();
 
 builder.Services.AddControllers();

@@ -7,6 +7,6 @@
             OrderBy = "namecategory";
         }
 
-        public string NameCategory { get; set; }
+        public string? NameCategory { get; set; }
     }
 }

@@ -16,15 +16,15 @@ namespace PAS.Application.API.Controllers
             this.productCategoryService = productCategoryService;
         }
 
-        [HttpGet]
-        public IActionResult Get()
-        {
-            var response = productCategoryService.GetProductsCategories();
-            return Ok(response);
-        }
+        //[HttpGet(Name = "Get")]
+        //public IActionResult Get()
+        //{
+        //    var response = productCategoryService.GetProductsCategories();
+        //    return Ok(response);
+        //}
 
 
-        [HttpGet]
+        [HttpGet(Name = "GetProductCategoryFilters")]
         public IActionResult GetProductCategoryFilters([FromQuery] ProductCategoryParameters parameters)
         {
             //TODO: REPOSITORY yendo a APLICATION QueryParameters
