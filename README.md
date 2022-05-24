@@ -3,6 +3,7 @@
 
 Sample implementation of the Clean Architecture Principles with .NET Core. 
 
+# Functionalities
 - OrderBy
 
 Example:
