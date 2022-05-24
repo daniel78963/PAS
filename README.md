@@ -3,6 +3,11 @@
 
 Sample implementation of the Clean Architecture Principles with .NET Core. 
 
+- OrderBy
+
+Example:
+https://localhost:7288/api/ProductCategory?OrderBy=NameCategory%20desc
+
 - SortHelper
 
 
