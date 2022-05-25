@@ -21,9 +21,15 @@ builder.Services.AddDbContext<DataContext>(cfg =>
 });
 builder.Services.AddScoped<IProductCategoryService, ProductCategoryService>();
 builder.Services.AddScoped<IProductCategoryDomain, ProductCategoryDomain>();
-builder.Services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
+//builder.Services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
 builder.Services.AddScoped<ISortHelper<ProductCategory>, SortHelper<ProductCategory>>();
 //builder.Services.AddScoped<IDataContext, DataContext>();
+
+#region Repositories
+builder.Services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddTransient<IProductCategoryRepository, IProductCategoryRepository>();
+//builder.Services.AddTransient<IProjectRepository, ProjectRepository>();
+#endregion
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

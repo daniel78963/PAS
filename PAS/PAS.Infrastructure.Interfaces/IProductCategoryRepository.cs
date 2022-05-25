@@ -3,7 +3,7 @@ using PAS.Domain.Entities;
 
 namespace PAS.Infrastructure.Interfaces
 {
-    public interface IProductCategoryRepository
+    public interface IProductCategoryRepository : IGenericRepository<ProductCategory>
     {
         IEnumerable<ProductCategory> GetProductsCategories();
         IEnumerable<ProductCategory> GetProductsCategoriesFilters(ProductCategoryParameters parameters);

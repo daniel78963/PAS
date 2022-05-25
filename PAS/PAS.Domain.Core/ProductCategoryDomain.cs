@@ -20,7 +20,7 @@ namespace PAS.Domain.Core
         }
 
         public IEnumerable<ProductCategory> GetProductsCategoriesFilters(ProductCategoryParameters parameters)
-        {
+        { 
             return productCategoryRepository.GetProductsCategoriesFilters(parameters);
         }
     }
