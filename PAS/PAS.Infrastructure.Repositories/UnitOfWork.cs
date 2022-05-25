@@ -14,10 +14,10 @@ namespace PAS.Infrastructure.Repositories
         {
             this.context = context;
             this.sortHelper = sortHelper;
-            ProductCategories = new ProductCategoryRepository(this.context, sortHelper);
+            ProductCategoriesRepository = new ProductCategoryRepository(this.context, sortHelper);
             //Projects = new ProjectRepository(_context);
         }
-        public IProductCategoryRepository ProductCategories { get; private set; }
+        public IProductCategoryRepository ProductCategoriesRepository { get; private set; }
         //public IProjectRepository Projects { get; private set; }
         public int Complete()
         {

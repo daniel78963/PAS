@@ -2,7 +2,7 @@
 {
     public interface IUnitOfWork : IDisposable
     {
-        IProductCategoryRepository ProductCategories { get; }
+        IProductCategoryRepository ProductCategoriesRepository { get; }
 
         int Complete();
     }

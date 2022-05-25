@@ -7,21 +7,28 @@ namespace PAS.Domain.Core
 {
     public class ProductCategoryDomain : IProductCategoryDomain
     {
-        private readonly IProductCategoryRepository productCategoryRepository;
+        //private readonly IProductCategoryRepository productCategoryRepository;
 
-        public ProductCategoryDomain(IProductCategoryRepository productCategoryRepository)
+        //public ProductCategoryDomain(IProductCategoryRepository productCategoryRepository)
+        //{
+        //    this.productCategoryRepository = productCategoryRepository;
+        //}
+        private readonly IUnitOfWork unitOfWork;
+
+        public ProductCategoryDomain(IUnitOfWork unitOfWork)
         {
-            this.productCategoryRepository = productCategoryRepository;
+            this.unitOfWork = unitOfWork;
         }
 
         public IEnumerable<ProductCategory> GetProductsCategories()
         {
-            return productCategoryRepository.GetProductsCategories();
+            //return productCategoryRepository.GetProductsCategories();
+            return unitOfWork.ProductCategoriesRepository.GetProductsCategories();
         }
 
         public IEnumerable<ProductCategory> GetProductsCategoriesFilters(ProductCategoryParameters parameters)
-        { 
-            return productCategoryRepository.GetProductsCategoriesFilters(parameters);
+        {
+            return unitOfWork.ProductCategoriesRepository.GetProductsCategoriesFilters(parameters);
         }
     }
 }
