@@ -5,12 +5,12 @@ using PAS.Infrastructure.Interfaces;
 
 namespace PAS.Infrastructure.Repositories
 {
-    public class ProductCategoryRepository : IProductCategoryRepository
+    public class ProductCategoryRepository :  GenericRepository<ProductCategory>, IProductCategoryRepository
     {
         private readonly DataContext dataContext;
         private readonly ISortHelper<ProductCategory> sortHelper;
 
-        public ProductCategoryRepository(DataContext dataContext, ISortHelper<ProductCategory> sortHelper)
+        public ProductCategoryRepository(DataContext dataContext, ISortHelper<ProductCategory> sortHelper) : base(dataContext)
         {
             this.dataContext = dataContext;
             this.sortHelper = sortHelper;
@@ -23,6 +23,7 @@ namespace PAS.Infrastructure.Repositories
 
         public IEnumerable<ProductCategory> GetProductsCategoriesFilters(ProductCategoryParameters parameters)
         {
+            //return _context.Developers.OrderByDescending(d => d.Followers).Take(count).ToList();
             var categories = dataContext.ProductCategory;
             return sortHelper.ApplySort(categories, parameters.OrderBy); 
         }

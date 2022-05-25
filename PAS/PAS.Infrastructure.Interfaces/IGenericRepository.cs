@@ -3,7 +3,7 @@
 namespace PAS.Infrastructure.Interfaces
 {
     public interface IGenericRepository<TEntity> where TEntity : class
-    {
+    { 
         //TODO: UPDATE ASYNC
         IEnumerable<TEntity> All();
         Task<IEnumerable<TEntity>> AllAsync();
