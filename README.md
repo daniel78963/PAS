@@ -17,6 +17,11 @@ https://localhost:7288/api/ProductCategory?OrderBy=NameCategory%20desc
 
 - Nuget: System.Linq.Dynamic.Core
 
+
+- Repository 
+- Generic Repository 
+- Unit Of Work
+
 ```sh
 node app
 ```
