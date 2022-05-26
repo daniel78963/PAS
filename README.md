@@ -10,6 +10,7 @@ Sample implementation of the Clean Architecture Principles with .NET Core.
 - Unit Of Work
 - OrderBy
 
+# OrderBy
 Example
 ```sh
 https://localhost:7288/api/ProductCategory?OrderBy=NameCategory%20desc
