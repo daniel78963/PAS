@@ -28,6 +28,11 @@ namespace PAS.Domain.Core
 
         public IEnumerable<ProductCategory> GetProductsCategoriesFilters(ProductCategoryParameters parameters)
         {
+            ProductCategory productCategory = new ProductCategory();
+            productCategory.NameCategory = "Nuevo ";
+            unitOfWork.ProductCategoriesRepository.Add(productCategory);
+            unitOfWork.Complete();
+
             return unitOfWork.ProductCategoriesRepository.GetProductsCategoriesFilters(parameters);
         }
     }

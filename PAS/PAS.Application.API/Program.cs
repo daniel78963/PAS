@@ -26,9 +26,10 @@ builder.Services.AddScoped<ISortHelper<ProductCategory>, SortHelper<ProductCateg
 //builder.Services.AddScoped<IDataContext, DataContext>();
 
 #region Repositories
-builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
-builder.Services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-builder.Services.AddTransient<IProductCategoryRepository, IProductCategoryRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+//builder.Services.AddScoped<IGenericRepository<ProductCategory>, GenericRepository<ProductCategory>>();
+//builder.Services.AddScoped<IProductCategoryRepository, IProductCategoryRepository>();
 //builder.Services.AddTransient<IProjectRepository, ProjectRepository>();
 #endregion
 

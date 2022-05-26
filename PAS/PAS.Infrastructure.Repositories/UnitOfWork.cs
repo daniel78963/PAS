@@ -17,12 +17,20 @@ namespace PAS.Infrastructure.Repositories
             ProductCategoriesRepository = new ProductCategoryRepository(this.context, sortHelper);
             //Projects = new ProjectRepository(_context);
         }
+        
         public IProductCategoryRepository ProductCategoriesRepository { get; private set; }
         //public IProjectRepository Projects { get; private set; }
+        
         public int Complete()
         {
             return context.SaveChanges();
         }
+
+        public async Task CompleteAsync()
+        {
+            await  context.SaveChangesAsync();
+        }
+
         public void Dispose()
         {
             context.Dispose();

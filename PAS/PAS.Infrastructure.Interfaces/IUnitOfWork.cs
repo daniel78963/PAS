@@ -5,5 +5,7 @@
         IProductCategoryRepository ProductCategoriesRepository { get; }
 
         int Complete();
+
+        Task CompleteAsync();
     }
 }
