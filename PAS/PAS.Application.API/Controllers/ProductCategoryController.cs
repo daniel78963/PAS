@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PAS.Application.Dto;
 using PAS.Application.Interfaces;
 using PAS.Application.QueryParameters;
 
@@ -22,6 +23,13 @@ namespace PAS.Application.API.Controllers
         //    var response = productCategoryService.GetProductsCategories();
         //    return Ok(response);
         //}
+
+        [HttpPost]
+        public IActionResult Add([FromBody] ProductCategoryDto productCategory)
+        {
+            //productCategoryService.
+            return null; 
+        }
 
 
         [HttpGet(Name = "GetProductCategoryFilters")]
