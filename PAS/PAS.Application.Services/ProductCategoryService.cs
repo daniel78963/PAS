@@ -6,7 +6,7 @@ using PAS.Domain.Interfaces;
 
 namespace PAS.Application.Services
 {
-    public class ProductCategoryService : IProductCategoryService
+    public class ProductCategoryService : GenericService<ProductCategoryDto>, IProductCategoryService
     {
         private readonly IProductCategoryDomain productCategoryDomain;
         private readonly IMapper mapper;
@@ -16,6 +16,7 @@ namespace PAS.Application.Services
             this.productCategoryDomain = productCategoryDomain;
             this.mapper = mapper;
         }
+         
 
         public Response<IEnumerable<ProductCategoryDto>> GetProductsCategories()
         {

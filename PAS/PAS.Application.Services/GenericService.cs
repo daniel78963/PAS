@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PAS.Application.Interfaces;
 
 namespace PAS.Application.Services
 {
-    public class GenericService
+    public class GenericService<T> : IGenericService<T> where T : class
     {
+        public Task<T> GetByIdAsync(object id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

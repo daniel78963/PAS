@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace PAS.Application.Interfaces
 {
-    public interface IGenericService
+    public interface IGenericService<T> where T : class
     {
+        Task<T> GetByIdAsync(object id);
     }
 }

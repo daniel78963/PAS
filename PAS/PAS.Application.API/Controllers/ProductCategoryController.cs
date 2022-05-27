@@ -23,13 +23,20 @@ namespace PAS.Application.API.Controllers
         //    var response = productCategoryService.GetProductsCategories();
         //    return Ok(response);
         //}
-
-        [HttpPost]
-        public IActionResult Add([FromBody] ProductCategoryDto productCategory)
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
         {
-            //productCategoryService.
-            return null; 
+            var dto = productCategoryService.GetByIdAsync(id);
+            return Ok(dto);
         }
+
+        //[HttpPost]
+        //public IActionResult Add([FromBody] ProductCategoryDto productCategory)
+        //{
+        //    //productCategoryService.
+        //    productCategoryService.GetByIdAsync()
+        //    return null; 
+        //}
 
 
         [HttpGet(Name = "GetProductCategoryFilters")]
