@@ -19,8 +19,8 @@ namespace PAS.Infrastructure.Repositories
         }
         
         public IProductCategoryRepository ProductCategoriesRepository { get; private set; }
-        //public IProjectRepository Projects { get; private set; }
-        
+        public IProductRepository ProductRepository { get; private set; } 
+
         public int Complete()
         {
             return context.SaveChanges();

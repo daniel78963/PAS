@@ -2,6 +2,6 @@
 {
     public interface IGenericDomain<T> where T : class
     {
-        Task<T> GetByIdAsync(object id);
+        Task<T> GetByIdAsync(object id); 
     }
 }

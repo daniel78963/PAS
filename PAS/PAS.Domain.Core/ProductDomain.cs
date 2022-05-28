@@ -1,4 +1,5 @@
-﻿using PAS.Domain.Interfaces;
+﻿using PAS.Domain.Entities;
+using PAS.Domain.Interfaces;
 using PAS.Infrastructure.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -8,20 +9,18 @@ using System.Threading.Tasks;
 
 namespace PAS.Domain.Core
 {
-    public class GenericDomain<T> : IGenericDomain<T> where T : class
+    public class ProductDomain : GenericDomain<Product> , IProductDomain  
     {
         private readonly IUnitOfWork unitOfWork;
 
-        public GenericDomain(IUnitOfWork unitOfWork)
+        public ProductDomain(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
         }
 
-        public IProductDomain ProductDomain { get; private set; }
-
-        public Task<T> GetByIdAsync(object id)
+        public async Task<IEnumerable<Product>> GetByName(string name)
         {
-            throw new NotImplementedException();
+
         }
     }
 }

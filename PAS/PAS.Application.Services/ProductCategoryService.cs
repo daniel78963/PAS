@@ -8,21 +8,24 @@ namespace PAS.Application.Services
 {
     public class ProductCategoryService : GenericService<ProductCategoryDto>, IProductCategoryService
     {
-        private readonly IProductCategoryDomain productCategoryDomain;
+        private readonly IGenericDomain<IProductCategoryDomain> productCategoryDomain;
         private readonly IMapper mapper;
 
-        public ProductCategoryService(IProductCategoryDomain productCategoryDomain, IMapper mapper)
+        //public ProductCategoryService(IProductCategoryDomain productCategoryDomain, IMapper mapper)
+        //public ProductCategoryService(IGenericDomain<IProductCategoryDomain> productCategoryDomain, IMapper mapper)
+        public ProductCategoryService(  IMapper mapper)
         {
-            this.productCategoryDomain = productCategoryDomain;
+            //this.productCategoryDomain = productCategoryDomain;
             this.mapper = mapper;
         }
-         
+
 
         public Response<IEnumerable<ProductCategoryDto>> GetProductsCategories()
         {
             var response = new Response<IEnumerable<ProductCategoryDto>>();
             try
             {
+
                 var categories = productCategoryDomain.GetProductsCategories();
                 response.Data = mapper.Map<IEnumerable<ProductCategoryDto>>(categories);
                 if (response.Data != null)
