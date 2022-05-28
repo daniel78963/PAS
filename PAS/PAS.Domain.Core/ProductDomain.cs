@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PAS.Domain.Core
 {
-    public class ProductDomain : GenericDomain<Product> , IProductDomain  
+    public class ProductDomain :   IProductDomain  
     {
         private readonly IUnitOfWork unitOfWork;
 
@@ -18,9 +18,14 @@ namespace PAS.Domain.Core
             this.unitOfWork = unitOfWork;
         }
 
+        public Task<Product> GetByIdAsync(object id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<IEnumerable<Product>> GetByName(string name)
         {
-
+            unitOfWork.ProductRepository.
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using PAS.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using PAS.Domain.Entities;
 using PAS.Infrastructure.Data;
 using PAS.Infrastructure.Interfaces;
 
@@ -18,6 +19,11 @@ namespace PAS.Infrastructure.Repositories
         public IEnumerable<Product> GetProducts()
         {
             return dataContext.Products;
+        }
+
+        public async Task<IEnumerable<Product>> GetByName(string name)
+        {
+            return await dataContext.Products.Where(p => p.Name == name).ToListAsync();
         }
     }
 }

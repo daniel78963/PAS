@@ -6,6 +6,8 @@ namespace PAS.Application.Services
     public class GenericService<T> : IGenericService<T> where T : class
     {
         public IProductCategoryService ProductCategoriesService { get; private set; }
+        public IProductService ProductService { get; private set; }
+
 
         private readonly IGenericDomain<T> genericDomain;
 

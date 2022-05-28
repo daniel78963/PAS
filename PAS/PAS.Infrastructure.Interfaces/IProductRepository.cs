@@ -6,5 +6,7 @@ namespace PAS.Infrastructure.Interfaces
     {
         IEnumerable<Product> GetProducts();
 
+        Task<IEnumerable<Product>> GetByName(string name);
+
     }
 }
