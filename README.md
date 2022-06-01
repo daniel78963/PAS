@@ -8,6 +8,8 @@ Sample implementation of the Clean Architecture Principles with .NET Core.
 - Repository 
 - Generic Repository 
 - Unit Of Work
+- Generic Service
+- Generic Domain
 - OrderBy
 
 # OrderBy
