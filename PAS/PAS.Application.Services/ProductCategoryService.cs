@@ -6,19 +6,23 @@ using PAS.Domain.Interfaces;
 
 namespace PAS.Application.Services
 {
-    public class ProductCategoryService : GenericService<ProductCategoryDto>, IProductCategoryService
+    public class ProductCategoryService : IProductCategoryService, IGenericService<ProductCategoryDto>
     {
-        private readonly IGenericDomain<IProductCategoryDomain> productCategoryDomain;
+        private readonly IProductCategoryDomain productCategoryDomain;
         private readonly IMapper mapper;
 
         //public ProductCategoryService(IProductCategoryDomain productCategoryDomain, IMapper mapper)
         //public ProductCategoryService(IGenericDomain<IProductCategoryDomain> productCategoryDomain, IMapper mapper)
-        public ProductCategoryService(  IMapper mapper)
+        public ProductCategoryService(IProductCategoryDomain productCategoryDomain, IMapper mapper)
         {
-            //this.productCategoryDomain = productCategoryDomain;
+            this.productCategoryDomain = productCategoryDomain;
             this.mapper = mapper;
         }
 
+        public Task<ProductCategoryDto> GetByIdAsync(object id)
+        {
+            throw new NotImplementedException();
+        }
 
         public Response<IEnumerable<ProductCategoryDto>> GetProductsCategories()
         {

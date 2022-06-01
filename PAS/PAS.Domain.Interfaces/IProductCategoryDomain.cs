@@ -3,7 +3,7 @@ using PAS.Domain.Entities;
 
 namespace PAS.Domain.Interfaces
 {
-    public interface IProductCategoryDomain 
+    public interface IProductCategoryDomain : IGenericDomain<ProductCategory>  
     {
         public IEnumerable<ProductCategory> GetProductsCategories();
 

@@ -20,6 +20,11 @@ namespace PAS.Domain.Core
             this.unitOfWork = unitOfWork;
         }
 
+        public Task<ProductCategory> GetByIdAsync(object id)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<ProductCategory> GetProductsCategories()
         {
             //return productCategoryRepository.GetProductsCategories();

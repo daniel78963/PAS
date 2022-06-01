@@ -25,7 +25,7 @@ namespace PAS.Application.Services
         {
             throw new NotImplementedException();
         }
-
+         
         public async Task<Response<IEnumerable<ProductDto>>> GetByName(string name)
         {
             var response = new Response<IEnumerable<ProductDto>>();
@@ -47,5 +47,6 @@ namespace PAS.Application.Services
             }
             return response;
         }
+         
     }
 }

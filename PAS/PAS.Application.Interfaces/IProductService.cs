@@ -9,7 +9,7 @@ namespace PAS.Application.Interfaces
 {
     public interface IProductService : IGenericService<ProductDto>
     {
-        Task<IEnumerable<ProductDto>> GetByName(string name);
+        Task<Response<IEnumerable<ProductDto>>> GetByName(string name);
 
     }
 }
