@@ -18,9 +18,9 @@ namespace PAS.Domain.Core
             this.unitOfWork = unitOfWork;
         }
 
-        public Task<Product> GetByIdAsync(object id)
+        public async Task<Product> GetByIdAsync(object id)
         {
-            throw new NotImplementedException();
+            return await unitOfWork.ProductRepository.GetByIdAsync(id);
         }
 
         public async Task<IEnumerable<Product>> GetByName(string name)
