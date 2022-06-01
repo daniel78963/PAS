@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PAS.Domain.Core
 {
-    public class ProductDomain :   IProductDomain  
+    public class ProductDomain : IProductDomain
     {
         private readonly IUnitOfWork unitOfWork;
 
@@ -25,7 +25,7 @@ namespace PAS.Domain.Core
 
         public async Task<IEnumerable<Product>> GetByName(string name)
         {
-            unitOfWork.ProductRepository.
+            return await unitOfWork.ProductRepository.GetByName(name);
         }
     }
 }
