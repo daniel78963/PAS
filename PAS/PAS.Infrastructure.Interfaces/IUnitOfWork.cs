@@ -4,6 +4,7 @@
     {
         IProductCategoryRepository ProductCategoriesRepository { get; }
         IProductRepository ProductRepository { get; }
+         
 
         int Complete();
 

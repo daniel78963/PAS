@@ -19,6 +19,11 @@ namespace PAS.Domain.Core
 
         public IProductDomain ProductDomain { get; private set; }
 
+        public virtual IEnumerable<T> All()
+        {
+            //unitOfWork.
+            throw new NotImplementedException();
+        }
         public Task<T> GetByIdAsync(object id)
         {
             throw new NotImplementedException();
