@@ -34,6 +34,10 @@ namespace PAS.Infrastructure.Repositories
         //    IQueryable<TEntity> query = dbSet;
         //    return await query.ToListAsync();
         //}
+        //public virtual Task<T> GetByIdAsync(object id)
+        //{ 
+
+        //}
 
         public int Complete()
         {

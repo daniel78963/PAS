@@ -15,7 +15,7 @@ namespace PAS.Domain.Core
         //}
         private readonly IUnitOfWork unitOfWork;
 
-        public ProductCategoryDomain(IUnitOfWork unitOfWork)
+        public ProductCategoryDomain(IUnitOfWork unitOfWork, IProductCategoryRepository productCategoryRepository)
         {
             this.unitOfWork = unitOfWork;
         }
