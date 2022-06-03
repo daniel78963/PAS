@@ -5,8 +5,8 @@ namespace PAS.Domain.Interfaces
 {
     public interface IProductCategoryDomain
     {
-        public IEnumerable<ProductCategory> GetProductsCategories();
-
-        public IEnumerable<ProductCategory> GetProductsCategoriesFilters(ProductCategoryParameters parameters);
+        Task<ProductCategory> GetByIdAsync(object id);
+        IEnumerable<ProductCategory> GetProductsCategories();
+        IEnumerable<ProductCategory> GetProductsCategoriesFilters(ProductCategoryParameters parameters);
     }
 }

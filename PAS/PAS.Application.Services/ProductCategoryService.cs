@@ -16,9 +16,25 @@ namespace PAS.Application.Services
             this.mapper = mapper;
         }
 
-        public Task<Response<ProductCategoryDto>> GetByIdAsync(object id)
+        public async Task<Response<ProductCategoryDto>> GetByIdAsync(object id)
         {
-            throw new NotImplementedException();
+            var response = new Response<ProductCategoryDto>();
+            try
+            {
+                var entity = await productCategoryDomain.GetByIdAsync(id);
+                response.Data = mapper.Map<ProductCategoryDto>(entity);
+                if (response.Data != null)
+                {
+                    response.IsSuccess = true;
+                    response.Message = "Success";
+                    response.Code = "1201";
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+            }
+            return response;
         }
 
         public Response<IEnumerable<ProductCategoryDto>> GetProductsCategories()

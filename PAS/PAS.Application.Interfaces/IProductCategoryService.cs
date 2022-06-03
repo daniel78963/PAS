@@ -5,9 +5,9 @@ namespace PAS.Application.Interfaces
 {
     public interface IProductCategoryService
     {
-        public Task<Response<ProductCategoryDto>> GetByIdAsync(object id);
-        public Response<IEnumerable<ProductCategoryDto>> GetProductsCategories();
-        public Response<IEnumerable<ProductCategoryDto>> GetProductsCategoriesFilters(ProductCategoryParameters parameters);
+        Task<Response<ProductCategoryDto>> GetByIdAsync(object id);
+        Response<IEnumerable<ProductCategoryDto>> GetProductsCategories();
+        Response<IEnumerable<ProductCategoryDto>> GetProductsCategoriesFilters(ProductCategoryParameters parameters);
 
     }
 }
