@@ -20,7 +20,7 @@ namespace PAS.Application.Dto
         public T? Data { get; set; }
 
         [JsonIgnore]
-        public int StatusCode { get; set; }
+        public int StatusCode { get; set; } = 400;
 
     }
 }

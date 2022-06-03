@@ -27,8 +27,22 @@ namespace PAS.Application.API.Controllers
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             //TODO: validations 
-            var dto = await productCategoryService.GetByIdAsync(id);
-            return Ok(dto);
+            //var dto = await productCategoryService.GetByIdAsync(id);
+            //return Ok(dto);
+            try
+            {
+                var response = await productCategoryService.GetByIdAsync(id);
+                return StatusCode(response.StatusCode, response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new Response<bool>
+                {
+                    Code = "500",
+                    Message = "Error",
+                    Result = ex.Message
+                });
+            }
         }
 
         //[HttpPost]

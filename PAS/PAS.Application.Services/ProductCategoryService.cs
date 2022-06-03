@@ -22,10 +22,21 @@ namespace PAS.Application.Services
             try
             {
                 var entity = await productCategoryDomain.GetByIdAsync(id);
+
+                if (entity == null)
+                {
+                    response.IsSuccess = true;
+                    response.StatusCode = 200;
+                    response.Message = "No data";
+                    response.Code = "1202";
+                    return response;
+                }
+
                 response.Data = mapper.Map<ProductCategoryDto>(entity);
                 if (response.Data != null)
                 {
                     response.IsSuccess = true;
+                    response.StatusCode = 200;
                     response.Message = "Success";
                     response.Code = "1201";
                 }
