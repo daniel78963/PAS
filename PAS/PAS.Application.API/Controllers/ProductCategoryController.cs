@@ -24,9 +24,10 @@ namespace PAS.Application.API.Controllers
         //    return Ok(response);
         //}
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetByIdAsync(int id)
         {
-            var dto = productCategoryService.GetByIdAsync(id);
+            //TODO: validations 
+            var dto = await productCategoryService.GetByIdAsync(id);
             return Ok(dto);
         }
 

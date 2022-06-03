@@ -77,5 +77,54 @@ namespace PAS.Application.Services
             }
             return response;
         }
+
+        public async Task<Response<IEnumerable<Error>>> ValidateObjetc(ProductDto productDto)
+        {
+            Response<IEnumerable<Error>> response = new Response<IEnumerable<Error>>();
+            List<Error> errores = new List<Error>();
+
+            if (string.IsNullOrEmpty(productDto.Name))
+            {
+                response.IsSuccess = false;
+                Error error = new Error()
+                {
+                    Code = "1410",
+                    Message = "Field Name is required"
+                };
+                errores.Add(error);
+            }
+
+            if (productDto.Name != null && productDto.Name.Length < 2)
+            {
+                Error error = new Error()
+                {
+                    Code = "1416",
+                    Message = "Field Name is not valid lenght"
+                };
+                errores.Add(error);
+            }
+
+            if (errores.Count > 1)
+            {
+                response.IsSuccess = false;
+                response.StatusCode = 400;
+                response.Message = "Multiple errors";
+                response.Code = "1440";
+                response.Data = errores;
+                return response;
+            }
+
+            if (errores.Any())
+            {
+                response.IsSuccess = false;
+                response.StatusCode = 400;
+                response.Message = errores.FirstOrDefault().Message;
+                response.Code = errores.FirstOrDefault().Code;
+                return response;
+            }
+
+            response.IsSuccess = true;
+            return response;
+        }
     }
 }
