@@ -25,6 +25,13 @@ namespace PAS.Domain.Core
             return await unitOfWork.ProductCategoriesRepository.GetByIdAsync(id);
         }
 
+        public async Task<bool> AddAsync(ProductCategory productCategory)
+        {
+            await unitOfWork.ProductCategoriesRepository.AddAsync(productCategory);
+            unitOfWork.Complete();
+            return true;
+        }
+
         public IEnumerable<ProductCategory> GetProductsCategories()
         {
             //return productCategoryRepository.GetProductsCategories();
@@ -33,10 +40,10 @@ namespace PAS.Domain.Core
 
         public IEnumerable<ProductCategory> GetProductsCategoriesFilters(ProductCategoryParameters parameters)
         {
-            ProductCategory productCategory = new ProductCategory();
-            productCategory.NameCategory = "Nuevo ";
-            unitOfWork.ProductCategoriesRepository.Add(productCategory);
-            unitOfWork.Complete();
+            //ProductCategory productCategory = new ProductCategory();
+            //productCategory.NameCategory = "Nuevo ";
+            //unitOfWork.ProductCategoriesRepository.Add(productCategory);
+            //unitOfWork.Complete();
 
             return unitOfWork.ProductCategoriesRepository.GetProductsCategoriesFilters(parameters);
         }

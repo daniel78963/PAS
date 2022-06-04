@@ -36,7 +36,7 @@ namespace PAS.Application.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new Response<bool>
+                return StatusCode(500, new Response
                 {
                     Code = "500",
                     Message = "Error",
@@ -45,14 +45,30 @@ namespace PAS.Application.API.Controllers
             }
         }
 
-        //[HttpPost]
-        //public IActionResult Add([FromBody] ProductCategoryDto productCategory)
-        //{
-        //    //productCategoryService.
-        //    productCategoryService.GetByIdAsync()
-        //    return null; 
-        //}
+        [HttpPost(Name = "Add")]
+        public async Task<IActionResult> AddAsync([FromBody] ProductCategoryDto dto)
+        {
+            if (dto == null)
+            {
+                return NotFound();
+                //return BadRequest(e);
+            }
 
+            try
+            {
+                var response = await productCategoryService.AddAsync(dto);
+                return StatusCode(response.StatusCode, response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new Response
+                {
+                    Code = "500",
+                    Message = "Error",
+                    Result = ex.Message
+                });
+            }
+        }
 
         [HttpGet(Name = "GetProductCategoryFilters")]
         public IActionResult GetProductCategoryFilters([FromQuery] ProductCategoryParameters parameters)

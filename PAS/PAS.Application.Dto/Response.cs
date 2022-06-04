@@ -7,17 +7,18 @@ using System.Threading.Tasks;
 
 namespace PAS.Application.Dto
 {
-    public class Response<T>
+    //public class Response<T>
+    public class Response
     { 
         public bool IsSuccess { get; set; }
 
-        public string Code { get; set; }
+        public string? Code { get; set; }
 
         public string? Message { get; set; }
 
         public object? Result { get; set; }
 
-        public T? Data { get; set; }
+        //public T? Data { get; set; }
 
         [JsonIgnore]
         public int StatusCode { get; set; } = 400;

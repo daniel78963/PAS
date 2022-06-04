@@ -2,6 +2,7 @@
 using PAS.Application.Dto;
 using PAS.Application.Interfaces;
 using PAS.Application.QueryParameters;
+using PAS.Domain.Entities;
 using PAS.Domain.Interfaces;
 
 namespace PAS.Application.Services
@@ -16,9 +17,11 @@ namespace PAS.Application.Services
             this.mapper = mapper;
         }
 
-        public async Task<Response<ProductCategoryDto>> GetByIdAsync(object id)
+        //public async Task<Response<ProductCategoryDto>> GetByIdAsync(object id)
+        public async Task<Response> GetByIdAsync(object id)
         {
-            var response = new Response<ProductCategoryDto>();
+            //var response = new Response<ProductCategoryDto>();
+            var response = new Response();
             try
             {
                 var entity = await productCategoryDomain.GetByIdAsync(id);
@@ -32,8 +35,8 @@ namespace PAS.Application.Services
                     return response;
                 }
 
-                response.Data = mapper.Map<ProductCategoryDto>(entity);
-                if (response.Data != null)
+                var data = mapper.Map<ProductCategoryDto>(entity);
+                if (data != null)
                 {
                     response.IsSuccess = true;
                     response.StatusCode = 200;
@@ -48,16 +51,50 @@ namespace PAS.Application.Services
             return response;
         }
 
-        public Response<IEnumerable<ProductCategoryDto>> GetProductsCategories()
+        public async Task<Response> AddAsync(ProductCategoryDto dto)
         {
-            var response = new Response<IEnumerable<ProductCategoryDto>>();
+
+            var response = new Response();
+            Response  valid = await ValidateObjetc(dto);
+            if (!valid.IsSuccess)
+            {
+                response.IsSuccess = false;
+                response.Result = valid;
+                return response;
+            }
+
             try
             {
+                var entity = mapper.Map<ProductCategory>(dto);
+                var data = await productCategoryDomain.AddAsync(entity);
+                response.Result = data;
+                response.IsSuccess = true;
+                response.StatusCode = 200;
+                response.Message = "Success";
+                response.Code = "1201";
+            }
+            catch (Exception ex)
+            {
+                response.StatusCode = 500;
+                response.Message = ex.Message;
+                response.Code = "1500";
+            }
+
+            return response;
+        }
+
+        public Response GetProductsCategories()
+        {
+            var response = new Response();
+            try
+            {
+                //IEnumerable<ProductCategoryDto>
                 var categories = productCategoryDomain.GetProductsCategories();
-                response.Data = mapper.Map<IEnumerable<ProductCategoryDto>>(categories);
-                if (response.Data != null)
+                var data = mapper.Map<IEnumerable<ProductCategoryDto>>(categories);
+                if (data != null)
                 {
                     response.IsSuccess = true;
+                    response.Result = data;
                     response.Message = "Success";
                     response.Code = "1201";
                 }
@@ -69,17 +106,19 @@ namespace PAS.Application.Services
             return response;
         }
 
-        public Response<IEnumerable<ProductCategoryDto>> GetProductsCategoriesFilters(ProductCategoryParameters parameters)
+        public Response GetProductsCategoriesFilters(ProductCategoryParameters parameters)
         {
-            var response = new Response<IEnumerable<ProductCategoryDto>>();
+            var response = new Response();
             try
             {
                 var categories = productCategoryDomain.GetProductsCategoriesFilters(parameters);
-                response.Data = mapper.Map<IEnumerable<ProductCategoryDto>>(categories);
-                if (response.Data != null)
+                var data = mapper.Map<IEnumerable<ProductCategoryDto>>(categories);
+                if (data != null)
                 {
                     response.IsSuccess = true;
+                    response.Result = data;
                     response.Message = "Success";
+                    response.Code = "1201";
                 }
             }
             catch (Exception e)
@@ -89,28 +128,28 @@ namespace PAS.Application.Services
             return response;
         }
 
-        public async Task<Response<IEnumerable<Error>>> ValidateObjetc(ProductDto productDto)
+        public async Task<Response> ValidateObjetc(ProductCategoryDto productDto)
         {
-            Response<IEnumerable<Error>> response = new Response<IEnumerable<Error>>();
+            Response response = new Response();
             List<Error> errores = new List<Error>();
 
-            if (string.IsNullOrEmpty(productDto.Name))
+            if (string.IsNullOrEmpty(productDto.NameCategory))
             {
                 response.IsSuccess = false;
                 Error error = new Error()
                 {
                     Code = "1410",
-                    Message = "Field Name is required"
+                    Message = "Field NameCategory is required"
                 };
                 errores.Add(error);
             }
 
-            if (productDto.Name != null && productDto.Name.Length < 2)
+            if (productDto.NameCategory != null && productDto.NameCategory.Length < 2)
             {
                 Error error = new Error()
                 {
                     Code = "1416",
-                    Message = "Field Name is not valid lenght"
+                    Message = "Field NameCategory is not valid lenght"
                 };
                 errores.Add(error);
             }
@@ -121,7 +160,7 @@ namespace PAS.Application.Services
                 response.StatusCode = 400;
                 response.Message = "Multiple errors";
                 response.Code = "1440";
-                response.Data = errores;
+                response.Result = errores;
                 return response;
             }
 
