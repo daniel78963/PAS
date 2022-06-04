@@ -55,13 +55,9 @@ namespace PAS.Application.Services
         {
 
             var response = new Response();
-            Response  valid = await ValidateObjetc(dto);
+            Response valid = await ValidateObjetc(dto);
             if (!valid.IsSuccess)
-            {
-                response.IsSuccess = false;
-                response.Result = valid;
-                return response;
-            }
+                return valid;
 
             try
             {
