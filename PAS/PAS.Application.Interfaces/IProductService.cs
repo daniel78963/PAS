@@ -4,6 +4,6 @@ namespace PAS.Application.Interfaces
 {
     public interface IProductService
     {
-        Task<Response<IEnumerable<ProductDto>>> GetByName(string name);
+        Task<Response> GetByName(string name);
     }
 }

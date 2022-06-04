@@ -26,17 +26,18 @@ namespace PAS.Application.Services
             throw new NotImplementedException();
         }
          
-        public async Task<Response<IEnumerable<ProductDto>>> GetByName(string name)
+        public async Task<Response> GetByName(string name)
         {
-            var response = new Response<IEnumerable<ProductDto>>();
+            var response = new Response();
             try
             {
 
                 var entities = productDomain.GetByName(name);
-                response.Data = mapper.Map<IEnumerable<ProductDto>>(entities);
-                if (response.Data != null)
+               var data = mapper.Map<IEnumerable<ProductDto>>(entities);
+                if (data != null)
                 {
                     response.IsSuccess = true;
+                    response.Result = data;
                     response.Message = "Success";
                     response.Code = "1201";
                 }
