@@ -16,19 +16,10 @@ namespace PAS.Application.API.Controllers
         {
             this.productCategoryService = productCategoryService;
         }
-
-        //[HttpGet(Name = "Get")]
-        //public IActionResult Get()
-        //{
-        //    var response = productCategoryService.GetProductsCategories();
-        //    return Ok(response);
-        //}
+ 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)
-        {
-            //TODO: validations 
-            //var dto = await productCategoryService.GetByIdAsync(id);
-            //return Ok(dto);
+        { 
             try
             {
                 var response = await productCategoryService.GetByIdAsync(id);
@@ -50,8 +41,7 @@ namespace PAS.Application.API.Controllers
         {
             if (dto == null)
             {
-                return NotFound();
-                //return BadRequest(e);
+                 return BadRequest();
             }
 
             try

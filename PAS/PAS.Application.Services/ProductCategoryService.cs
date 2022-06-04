@@ -52,8 +52,7 @@ namespace PAS.Application.Services
         }
 
         public async Task<Response> AddAsync(ProductCategoryDto dto)
-        {
-
+        { 
             var response = new Response();
             Response valid = await ValidateObjetc(dto);
             if (!valid.IsSuccess)
