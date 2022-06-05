@@ -127,12 +127,19 @@ namespace PAS.Infrastructure.Repositories
             context.Entry(entityToUpdate).State = EntityState.Modified;
         }
 
-        //public virtual Task<bool> UpdateASync(TEntity entityToUpdate)
-        //{
-        //    //dbSet.Attach(entityToUpdate);
-        //    //context.Entry(entityToUpdate).State = EntityState.Modified;
-        //     dbSet.Update(entityToUpdate);
-        //    return   true;
-        //}
+        public virtual async Task<bool> UpdateASync(TEntity entityToUpdate, object id)
+        {
+            TEntity exist = await dbSet.FindAsync(id);
+            //if (exist == null)
+            //    throw new ArgumentNullException("entity");
+            ////return false;
+            if (exist != null)
+            {
+                dbSet.Update(entityToUpdate);
+                //dbSet.Attach(entityToUpdate);
+                return true;
+            }
+            return false;
+        }
     }
 }

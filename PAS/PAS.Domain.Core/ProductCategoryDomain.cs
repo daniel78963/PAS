@@ -32,6 +32,17 @@ namespace PAS.Domain.Core
             return true;
         }
 
+        public async Task<bool> UpdateASync(ProductCategory productCategory)
+        {
+            bool valid = await unitOfWork.ProductCategoriesRepository.UpdateASync(productCategory, productCategory.Id);
+            if (!valid)
+            {
+                return false;
+            }
+            unitOfWork.Complete();
+            return true;
+        }
+
         public IEnumerable<ProductCategory> GetProductsCategories()
         {
             //return productCategoryRepository.GetProductsCategories();

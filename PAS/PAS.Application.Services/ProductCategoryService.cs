@@ -62,7 +62,7 @@ namespace PAS.Application.Services
             {
                 var entity = mapper.Map<ProductCategory>(dto);
                 var data = await productCategoryDomain.AddAsync(entity);
-                response.Result = data;
+                //response.Result = data;
                 response.IsSuccess = true;
                 response.StatusCode = 200;
                 response.Message = "Success";
@@ -77,6 +77,7 @@ namespace PAS.Application.Services
 
             return response;
         }
+         
 
         public Response GetProductsCategories()
         {
