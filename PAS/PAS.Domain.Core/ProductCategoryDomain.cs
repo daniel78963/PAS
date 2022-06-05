@@ -32,9 +32,9 @@ namespace PAS.Domain.Core
             return true;
         }
 
-        public async Task<bool> UpdateASync(ProductCategory productCategory)
+        public async Task<bool> UpdateAsync(ProductCategory productCategory)
         {
-            bool valid = await unitOfWork.ProductCategoriesRepository.UpdateASync(productCategory, productCategory.Id);
+            bool valid = await unitOfWork.ProductCategoriesRepository.UpdateAsync(productCategory, productCategory.Id);
             if (!valid)
             {
                 return false;

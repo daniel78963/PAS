@@ -15,7 +15,7 @@ namespace PAS.Infrastructure.Interfaces
         Task<bool> DeleteAsync(object id);
         //Task<bool> Upsert(TEntity entity);
         void Update(TEntity entity);
-        Task<bool> UpdateASync(TEntity entityToUpdate, object id);
+        Task<bool> UpdateAsync(TEntity entityToUpdate, object id);
         //Task<IEnumerable<TEntity>> Find(Expression<Func<TEntity, bool>> predicate);
     }
 }

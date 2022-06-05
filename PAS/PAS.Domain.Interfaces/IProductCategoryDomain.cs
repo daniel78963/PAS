@@ -8,6 +8,7 @@ namespace PAS.Domain.Interfaces
         Task<ProductCategory> GetByIdAsync(object id);
         //Task<ProductCategory> GetByNameAsync(string name);
         Task<bool> AddAsync(ProductCategory productCategory);
+        Task<bool> UpdateAsync(ProductCategory productCategory);
         IEnumerable<ProductCategory> GetProductsCategories();
         IEnumerable<ProductCategory> GetProductsCategoriesFilters(ProductCategoryParameters parameters);
     }

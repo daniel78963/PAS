@@ -127,7 +127,7 @@ namespace PAS.Infrastructure.Repositories
             context.Entry(entityToUpdate).State = EntityState.Modified;
         }
 
-        public virtual async Task<bool> UpdateASync(TEntity entityToUpdate, object id)
+        public virtual async Task<bool> UpdateAsync(TEntity entityToUpdate, object id)
         {
             TEntity exist = await dbSet.FindAsync(id);
             //if (exist == null)

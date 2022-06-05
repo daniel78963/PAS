@@ -77,7 +77,33 @@ namespace PAS.Application.Services
 
             return response;
         }
-         
+
+        public async Task<Response> UpdateASync(ProductCategoryDto dto)
+        {
+            var response = new Response();
+            Response valid = await ValidateObjetc(dto);
+            if (!valid.IsSuccess)
+                return valid;
+
+            try
+            {
+                var entity = mapper.Map<ProductCategory>(dto);
+                var data = await productCategoryDomain.UpdateAsync(entity);
+                //response.Result = data;
+                response.IsSuccess = true;
+                response.StatusCode = 200;
+                response.Message = "Success";
+                response.Code = "1201";
+            }
+            catch (Exception ex)
+            {
+                response.StatusCode = 500;
+                response.Message = ex.Message;
+                response.Code = "1500";
+            }
+
+            return response;
+        }
 
         public Response GetProductsCategories()
         {
