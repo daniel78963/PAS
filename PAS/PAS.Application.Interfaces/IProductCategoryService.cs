@@ -11,6 +11,7 @@ namespace PAS.Application.Interfaces
         //Response<IEnumerable<ProductCategoryDto>> GetProductsCategoriesFilters(ProductCategoryParameters parameters);
         Task<Response> GetByIdAsync(object id);
         Task<Response> AddAsync(ProductCategoryDto dto);
+        Task<Response> UpdateASync(ProductCategoryDto dto);
         Response GetProductsCategories();
         Response GetProductsCategoriesFilters(ProductCategoryParameters parameters);
 

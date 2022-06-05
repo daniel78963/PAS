@@ -60,6 +60,30 @@ namespace PAS.Application.API.Controllers
             }
         }
 
+        [HttpPost(Name = "Update")]
+        public async Task<IActionResult> UpdateAsync([FromBody] ProductCategoryDto dto)
+        {
+            if (dto == null)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var response = await productCategoryService.UpdateASync(dto);
+                return StatusCode(response.StatusCode, response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new Response
+                {
+                    Code = "500",
+                    Message = "Error",
+                    Result = ex.Message
+                });
+            }
+        }
+
         [HttpGet(Name = "GetProductCategoryFilters")]
         public IActionResult GetProductCategoryFilters([FromQuery] ProductCategoryParameters parameters)
         {
