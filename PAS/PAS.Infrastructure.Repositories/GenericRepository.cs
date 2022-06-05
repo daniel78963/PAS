@@ -135,8 +135,10 @@ namespace PAS.Infrastructure.Repositories
             ////return false;
             if (exist != null)
             {
-                dbSet.Update(entityToUpdate);
+                context.Entry(exist).CurrentValues.SetValues(entityToUpdate);
+                //dbSet.Update(entityToUpdate);
                 //dbSet.Attach(entityToUpdate);
+                //context.Entry(entityToUpdate).State = EntityState.Modified;
                 return true;
             }
             return false;

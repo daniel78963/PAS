@@ -60,7 +60,7 @@ namespace PAS.Application.API.Controllers
             }
         }
 
-        [HttpPost(Name = "Update")]
+        [HttpPut(Name = "Update")]
         public async Task<IActionResult> UpdateAsync([FromBody] ProductCategoryDto dto)
         {
             if (dto == null)
