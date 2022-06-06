@@ -6,6 +6,7 @@ using PAS.Application.QueryParameters;
 using PAS.Domain.Entities;
 using PAS.Domain.Interfaces;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace PAS.Application.Services
 {
@@ -257,6 +258,31 @@ namespace PAS.Application.Services
                             if (valor != null)
                             {
 
+                                if (customAttribute is LengthField)
+                                {
+                                    LengthField field = customAttribute as LengthField;
+                                    int longitud = valor.ToString().Length;
+                                    if (longitud < field.MinValue || longitud > field.MaxValue)
+                                        errors.Add(BuildMessageError(entity, property, customAttribute));
+                                }
+
+                                if (customAttribute is IPField)
+                                {
+                                    if (!Regex.IsMatch(valor.ToString(), @"^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(:\d{1,5})?$"))
+                                        errors.Add(BuildMessageError(entity, property, customAttribute));
+                                }
+
+                                if (customAttribute is AlphanumericField)
+                                {
+                                    if (!Regex.IsMatch(valor.ToString(), "^[a-zA-Z0-9]*$"))
+                                        errors.Add(BuildMessageError(entity, property, customAttribute));
+                                }
+
+                                if (customAttribute is FormatDateField)
+                                {
+                                    if (!Regex.IsMatch(valor.ToString(), "^([0]?[1-9]|[1|2][0-9]|[3][0|1])[/]([0]?[1-9]|[1][0-2])[/]([0-9]{4})$"))
+                                        errors.Add(BuildMessageError(entity, property, customAttribute));
+                                }
                             }
                         }
                     }
