@@ -190,26 +190,26 @@ namespace PAS.Application.Services
                 errores = await ValidateDataFields(productDto);
             }
 
-            if (string.IsNullOrEmpty(productDto.NameCategory))
-            {
-                response.IsSuccess = false;
-                Error error = new Error()
-                {
-                    Code = "1410",
-                    Message = "Field NameCategory is required"
-                };
-                errores.Add(error);
-            }
+            //if (string.IsNullOrEmpty(productDto.NameCategory))
+            //{
+            //    response.IsSuccess = false;
+            //    Error error = new Error()
+            //    {
+            //        Code = "1410",
+            //        Message = "Field NameCategory is required"
+            //    };
+            //    errores.Add(error);
+            //}
 
-            if (productDto.NameCategory != null && productDto.NameCategory.Length < 2)
-            {
-                Error error = new Error()
-                {
-                    Code = "1416",
-                    Message = "Field NameCategory is not valid lenght"
-                };
-                errores.Add(error);
-            }
+            //if (productDto.NameCategory != null && productDto.NameCategory.Length < 2)
+            //{
+            //    Error error = new Error()
+            //    {
+            //        Code = "1416",
+            //        Message = "Field NameCategory is not valid lenght"
+            //    };
+            //    errores.Add(error);
+            //}
 
             if (errores.Count > 1)
             {
@@ -257,6 +257,12 @@ namespace PAS.Application.Services
 
                             if (valor != null)
                             {
+                                if (customAttribute is RequiredField)
+                                {
+                                    RequiredField field = customAttribute as RequiredField;
+                                    if (string.IsNullOrEmpty(valor.ToString()))
+                                        errors.Add(BuildMessageError(entity, property, customAttribute));
+                                }
 
                                 if (customAttribute is LengthField)
                                 {
@@ -288,7 +294,7 @@ namespace PAS.Application.Services
                     }
                 }
             }
-
+            return errors;
         }
 
         private Error BuildMessageError(object entity, PropertyInfo property, CustomAttribute customAttribute)
