@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using PAS.Application.Dto;
 using PAS.Application.Interfaces;
 using PAS.Application.QueryParameters;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace PAS.Application.API.Controllers
 {
@@ -16,10 +17,10 @@ namespace PAS.Application.API.Controllers
         {
             this.productCategoryService = productCategoryService;
         }
- 
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)
-        { 
+        {
             try
             {
                 var response = await productCategoryService.GetByIdAsync(id);
@@ -37,11 +38,14 @@ namespace PAS.Application.API.Controllers
         }
 
         [HttpPost(Name = "Add")]
+        [ProducesResponseType(typeof(Response), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Response), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> AddAsync([FromBody] ProductCategoryDto dto)
         {
             if (dto == null)
             {
-                 return BadRequest();
+                return BadRequest();
             }
 
             try
@@ -70,7 +74,35 @@ namespace PAS.Application.API.Controllers
 
             try
             {
-                var response = await productCategoryService.UpdateASync(dto);
+                var response = await productCategoryService.UpdateAsync(dto);
+                return StatusCode(response.StatusCode, response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new Response
+                {
+                    Code = "500",
+                    Message = "Error",
+                    Result = ex.Message
+                });
+            }
+        }
+
+        [HttpDelete]
+        [SwaggerOperation("Delete ProductCategory")]
+        [SwaggerResponse(200, type: typeof(bool))]
+        [SwaggerResponse(400)]
+        [SwaggerResponse(500, Description = "Internal Server Error")]
+        public async Task<IActionResult> DeleteAsync([FromBody] ProductCategoryDto dto)
+        {
+            if (dto == null)
+            {
+                return BadRequest("Null object in request");
+            }
+
+            try
+            {
+                var response = await productCategoryService.DeleteAsync(dto);
                 return StatusCode(response.StatusCode, response);
             }
             catch (Exception ex)

@@ -43,6 +43,17 @@ namespace PAS.Domain.Core
             return true;
         }
 
+        public async Task<bool> DeleteAync(ProductCategory productCategory)
+        {
+            bool valid = await unitOfWork.ProductCategoriesRepository.DeleteAsync(productCategory.Id);
+            if (!valid)
+            {
+                return false;
+            }
+            unitOfWork.Complete();
+            return true;
+        }
+
         public IEnumerable<ProductCategory> GetProductsCategories()
         {
             //return productCategoryRepository.GetProductsCategories();
