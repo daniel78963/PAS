@@ -115,7 +115,7 @@ namespace PAS.Application.Services
             try
             {
                 var entity = mapper.Map<ProductCategory>(dto);
-                var data = await productCategoryDomain.UpdateAsync(entity);
+                var data = await productCategoryDomain.DeleteAync(entity);
                 //response.Result = data;
                 response.IsSuccess = true;
                 response.StatusCode = 200;
