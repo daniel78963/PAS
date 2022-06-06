@@ -9,6 +9,7 @@ Sample implementation of the Clean Architecture Principles with .NET Core.
 - Generic Repository 
 - Unit Of Work
 - OrderBy
+- Validation fieds with Attributes
 
 # OrderBy
 Example
