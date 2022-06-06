@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using PAS.Application.Attributes;
 using PAS.Application.Dto;
 using PAS.Application.Interfaces;
 using PAS.Application.QueryParameters;
 using PAS.Domain.Entities;
 using PAS.Domain.Interfaces;
+using System.Reflection;
 
 namespace PAS.Application.Services
 {
@@ -52,7 +54,7 @@ namespace PAS.Application.Services
         }
 
         public async Task<Response> AddAsync(ProductCategoryDto dto)
-        { 
+        {
             var response = new Response();
             Response valid = await ValidateObjetc(dto);
             if (!valid.IsSuccess)
@@ -182,6 +184,11 @@ namespace PAS.Application.Services
             Response response = new Response();
             List<Error> errores = new List<Error>();
 
+            if (productDto != null)
+            {
+                errores = await ValidateDataFields(productDto);
+            }
+
             if (string.IsNullOrEmpty(productDto.NameCategory))
             {
                 response.IsSuccess = false;
@@ -224,6 +231,48 @@ namespace PAS.Application.Services
 
             response.IsSuccess = true;
             return response;
+        }
+
+        //TODO Transversal
+        private async Task<List<Error>> ValidateDataFields(object entity)
+        {
+            List<Error> errors = new List<Error>();
+            Type _type = entity.GetType();
+            PropertyInfo[] props = _type.GetProperties();
+
+            foreach (PropertyInfo property in props)
+            {
+                object[] attrs = property.GetCustomAttributes(true);
+                foreach (var attr in attrs)
+                {
+                    CustomAttribute customAttribute = attr as CustomAttribute;
+                    if (customAttribute != null)
+                    {
+                        if (customAttribute.Validate)
+                        {
+                            object valor = property.GetValue(entity, null);
+                            if (valor == null && customAttribute is RequiredField)
+                                errors.Add(BuildMessageError(entity, property, customAttribute));
+
+                            if (valor != null)
+                            {
+
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+        private Error BuildMessageError(object entity, PropertyInfo property, CustomAttribute customAttribute)
+        {
+            //string name = property.Name;
+            return new Error
+            {
+                Code = customAttribute.Code,
+                Message = customAttribute.Message
+            };
         }
     }
 }
