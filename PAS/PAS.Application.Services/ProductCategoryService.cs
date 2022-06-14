@@ -165,6 +165,7 @@ namespace PAS.Application.Services
             {
                 var categories = productCategoryDomain.GetProductsCategoriesFilters(parameters);
                 var data = mapper.Map<IEnumerable<ProductCategoryDto>>(categories);
+                //var dtos = MapperGenericHelper<IEnumerable<ProductCategory>, IEnumerable<ProductCategoryDto>>.ToMapper(categories);
                 if (data != null)
                 {
                     response.IsSuccess = true;
