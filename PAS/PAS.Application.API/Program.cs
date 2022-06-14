@@ -1,3 +1,4 @@
+using AspNetCoreRateLimit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using PAS.Application.Interfaces;
@@ -55,6 +56,30 @@ builder.Services.AddAutoMapper(typeof(MappingsProfile));
 
 //builder.Services.AddScoped<IMyDependency, MyDependency>();
 
+
+//Rate Limit
+// needed to load configuration from appsettings.json
+builder.Services.AddOptions();
+// needed to store rate limit counters and ip rules
+builder.Services.AddMemoryCache();
+//load general configuration from appsettings.json
+builder.Services.Configure<IpRateLimitOptions>(builder.Configuration.GetSection("IpRateLimiting"));
+// inject counter and rules stores
+builder.Services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
+builder.Services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
+// Add framework services.
+builder.Services.AddInMemoryRateLimiting();
+// configure the resolvers
+builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+// https://github.com/aspnet/Hosting/issues/793
+// the IHttpContextAccessor service is not registered by default.
+// the clientId/clientIp resolvers use it.
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+// configuration (resolvers, counter key builders)
+builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -63,6 +88,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseIpRateLimiting();
+app.UseClientRateLimiting();
 
 app.UseHttpsRedirection();
 
