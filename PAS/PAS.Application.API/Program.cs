@@ -1,4 +1,6 @@
 using AspNetCoreRateLimit;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using PAS.Application.Interfaces;
@@ -56,6 +58,10 @@ builder.Services.AddAutoMapper(typeof(MappingsProfile));
 
 //builder.Services.AddScoped<IMyDependency, MyDependency>();
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores< DataContext >()
+    .AddDefaultTokenProviders();
 
 //Rate Limit
 // needed to load configuration from appsettings.json
