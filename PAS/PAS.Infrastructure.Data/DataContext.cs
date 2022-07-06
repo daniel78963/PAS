@@ -15,6 +15,12 @@ namespace PAS.Infrastructure.Data
 
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
+            string connection = "server=.\\SQLEXPRESS2016; database=PAS; user id=sa; password=Medellin1;Trusted_Connection=False;MultipleActiveResultSets=true;";
+
+            var optionsBuilder = new DbContextOptionsBuilder<DataContext>();
+            //optionsBuilder.UseSqlServer(connection, opts => opts.CommandTimeout((int)TimeSpan.FromMinutes(10).TotalSeconds));
+            optionsBuilder.UseSqlServer(connection);
+            //options.UseSqlServer(connection, b => b.MigrationsAssembly("PAS.Application.API"))
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
