@@ -14,13 +14,17 @@ namespace PAS.Application.API.Controllers
     {
         private readonly UserManager<IdentityUser> userManager;
         private readonly IConfiguration configuration;
+        private readonly SignInManager<IdentityUser> signInManager;
 
-        public AccountController(UserManager<IdentityUser> userManager, IConfiguration configuration)
+        public AccountController(UserManager<IdentityUser> userManager, IConfiguration configuration,
+            SignInManager<IdentityUser> signInManager )
         {
             this.userManager = userManager;
             this.configuration = configuration;
+            this.signInManager = signInManager;
         }
 
+        [HttpPost]
         public async Task<ActionResult<AuthenticationResponse>> Signin(UserCredentials userCredentials)
         {
             var user = new IdentityUser
@@ -32,6 +36,19 @@ namespace PAS.Application.API.Controllers
 
             if (!result.Succeeded)
                 return BadRequest(result.Errors);
+
+            return BuildToken(userCredentials);
+        }
+
+        public async Task<ActionResult<AuthenticationResponse>> Login(UserCredentials userCredentials )
+        {
+            var result = await signInManager.PasswordSignInAsync(userCredentials.Email,
+                userCredentials.Password, isPersistent: false, lockoutOnFailure: false);
+            //isPersistent: cookie de autenticación
+            if (!result.Succeeded)
+            {
+                return BadRequest("Incorrect Login");
+            }
 
             return BuildToken(userCredentials);
         }
