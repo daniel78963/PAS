@@ -2,6 +2,7 @@ using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using PAS.Application.Interfaces;
 using PAS.Application.Mapper;
@@ -13,7 +14,7 @@ using PAS.Infrastructure.Data;
 using PAS.Infrastructure.Data.Helpers;
 using PAS.Infrastructure.Interfaces;
 using PAS.Infrastructure.Repositories;
-
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -58,7 +59,18 @@ builder.Services.AddAutoMapper(typeof(MappingsProfile));
 
 //builder.Services.AddScoped<IMyDependency, MyDependency>();
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
+//builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
+    options=>options.TokenValidationParameters =  new TokenValidationParameters
+    {
+        ValidateIssuer= false,
+        ValidateAudience= false,
+        ValidateLifetime=true,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(
+            Encoding.UTF8.GetBytes(builder.Configuration["JwtKey"])),
+        ClockSkew = TimeSpan.Zero
+    });
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores< DataContext >()
     .AddDefaultTokenProviders();

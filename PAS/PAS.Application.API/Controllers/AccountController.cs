@@ -24,7 +24,7 @@ namespace PAS.Application.API.Controllers
             this.signInManager = signInManager;
         }
 
-        [HttpPost]
+        [HttpPost("Signin")]
         public async Task<ActionResult<AuthenticationResponse>> Signin(UserCredentials userCredentials)
         {
             var user = new IdentityUser
@@ -40,6 +40,7 @@ namespace PAS.Application.API.Controllers
             return BuildToken(userCredentials);
         }
 
+        [HttpPost("login")]
         public async Task<ActionResult<AuthenticationResponse>> Login(UserCredentials userCredentials )
         {
             var result = await signInManager.PasswordSignInAsync(userCredentials.Email,
