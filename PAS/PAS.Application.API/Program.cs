@@ -44,6 +44,29 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "API PAS", Version = "v1" });
+
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header
+    });
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[]{ }
+        }
+    });
 });
 
 //builder.AddSingleton<IConfiguration>(Configuration);
@@ -61,18 +84,18 @@ builder.Services.AddAutoMapper(typeof(MappingsProfile));
 
 //builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
-    options=>options.TokenValidationParameters =  new TokenValidationParameters
+    options => options.TokenValidationParameters = new TokenValidationParameters
     {
-        ValidateIssuer= false,
-        ValidateAudience= false,
-        ValidateLifetime=true,
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(
             Encoding.UTF8.GetBytes(builder.Configuration["JwtKey"])),
         ClockSkew = TimeSpan.Zero
     });
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores< DataContext >()
+    .AddEntityFrameworkStores<DataContext>()
     .AddDefaultTokenProviders();
 
 //Rate Limit
