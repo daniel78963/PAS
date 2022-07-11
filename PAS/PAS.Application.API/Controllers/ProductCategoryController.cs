@@ -120,6 +120,7 @@ namespace PAS.Application.API.Controllers
         }
 
         [HttpGet(Name = "GetProductCategoryFilters")]
+        [AllowAnonymous]
         public IActionResult GetProductCategoryFilters([FromQuery] ProductCategoryParameters parameters)
         {
             //TODO: REPOSITORY yendo a APLICATION QueryParameters
