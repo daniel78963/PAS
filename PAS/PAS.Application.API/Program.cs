@@ -94,6 +94,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
             Encoding.UTF8.GetBytes(builder.Configuration["JwtKey"])),
         ClockSkew = TimeSpan.Zero
     });
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("IsAdmin", policy => policy.RequireClaim("IsAdmin"));
+});
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<DataContext>()
     .AddDefaultTokenProviders();
