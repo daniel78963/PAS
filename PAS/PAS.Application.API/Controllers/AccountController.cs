@@ -93,5 +93,11 @@ namespace PAS.Application.API.Controllers
             };
 
         }
+
+        [HttpPost("DoAdmin")]
+        public async Task<ActionResult> DoAdmin()
+        {
+
+        }
     }
 }

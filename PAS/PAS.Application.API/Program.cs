@@ -97,6 +97,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("IsAdmin", policy => policy.RequireClaim("IsAdmin"));
+    options.AddPolicy("IsSeller", policy => policy.RequireClaim("IsSeller"));
 });
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<DataContext>()

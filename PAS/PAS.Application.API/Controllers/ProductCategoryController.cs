@@ -96,6 +96,7 @@ namespace PAS.Application.API.Controllers
         [SwaggerResponse(200, type: typeof(bool))]
         [SwaggerResponse(400)]
         [SwaggerResponse(500, Description = "Internal Server Error")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "IsAdmin")]
         public async Task<IActionResult> DeleteAsync([FromBody] ProductCategoryDto dto)
         {
             if (dto == null)
