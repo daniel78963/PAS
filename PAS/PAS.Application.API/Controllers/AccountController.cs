@@ -17,7 +17,7 @@ namespace PAS.Application.API.Controllers
         private readonly SignInManager<IdentityUser> signInManager;
 
         public AccountController(UserManager<IdentityUser> userManager, IConfiguration configuration,
-            SignInManager<IdentityUser> signInManager )
+            SignInManager<IdentityUser> signInManager)
         {
             this.userManager = userManager;
             this.configuration = configuration;
@@ -41,7 +41,7 @@ namespace PAS.Application.API.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<AuthenticationResponse>> Login(UserCredentials userCredentials )
+        public async Task<ActionResult<AuthenticationResponse>> Login(UserCredentials userCredentials)
         {
             var result = await signInManager.PasswordSignInAsync(userCredentials.Email,
                 userCredentials.Password, isPersistent: false, lockoutOnFailure: false);
@@ -52,6 +52,18 @@ namespace PAS.Application.API.Controllers
             }
 
             return BuildToken(userCredentials);
+        }
+
+        public ActionResult<AuthenticationResponse> RenewToken()
+        {
+            var mailClaim = HttpContext.User.Claims.Where(claim => claim.Type == "email").FirstOrDefault();
+            var mail = mailClaim.Value;
+            var userCredentials = new UserCredentials()
+            {
+                Email = mail
+            };
+            return BuildToken(userCredentials);
+
         }
 
         private AuthenticationResponse BuildToken(UserCredentials userCredentials)
