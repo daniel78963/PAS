@@ -101,5 +101,13 @@ namespace PAS.Application.API.Controllers
             await userManager.AddClaimAsync(user, new Claim("IsAdmin", "1"));
             return NoContent();
         }
+
+        [HttpPost("RemoveAdmin")]
+        public async Task<ActionResult> RemoveAdmin(EditAdminDto editAdminDto)
+        {
+            var user = await userManager.FindByEmailAsync(editAdminDto.Email);
+            await userManager.RemoveClaimAsync(user, new Claim("IsAdmin", "1"));
+            return NoContent();
+        }
     }
 }
