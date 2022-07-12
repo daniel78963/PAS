@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using PAS.Application.Dto.Account;
@@ -54,6 +56,8 @@ namespace PAS.Application.API.Controllers
             return BuildToken(userCredentials);
         }
 
+        [HttpGet("RenewToken")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public ActionResult<AuthenticationResponse> RenewToken()
         {
             var mailClaim = HttpContext.User.Claims.Where(claim => claim.Type == "email").FirstOrDefault();
