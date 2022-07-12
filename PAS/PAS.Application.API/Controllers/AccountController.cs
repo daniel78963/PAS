@@ -60,7 +60,10 @@ namespace PAS.Application.API.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public ActionResult<AuthenticationResponse> RenewToken()
         {
-            var mailClaim = HttpContext.User.Claims.Where(claim => claim.Type == "email").FirstOrDefault();
+            //var mailClaim = HttpContext.User.Claims.Where(claim => claim.Type == "email").FirstOrDefault();
+            var mailClaim = HttpContext.User.Claims.Where(claim => claim.Type == ClaimTypes.Email).FirstOrDefault();
+            if (mailClaim == null)
+                return null;
             var mail = mailClaim.Value;
             var userCredentials = new UserCredentials()
             {
