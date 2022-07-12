@@ -95,9 +95,11 @@ namespace PAS.Application.API.Controllers
         }
 
         [HttpPost("DoAdmin")]
-        public async Task<ActionResult> DoAdmin()
+        public async Task<ActionResult> DoAdmin(EditAdminDto editAdminDto)
         {
-
+            var user = await userManager.FindByEmailAsync(editAdminDto.Email);
+            await userManager.AddClaimAsync(user, new Claim("IsAdmin", "1"));
+            return NoContent();
         }
     }
 }
